@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.CollapseRecyclerViewActivity"
+    >
+    <ImageView
+        android:id="@+id/activity_pontos_inspecao_linha"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:background="@android:color/holo_orange_dark"
+        android:contentDescription="Separador"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        />
+    <ImageView
+        android:id="@+id/activity_pontos_inspecao_background"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:background="@android:color/white"
+        android:contentDescription="Banner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_pontos_inspecao_linha"
+        app:layout_constraintVertical_bias="0.0"
+        />
+    <ImageView
+        android:id="@+id/activity_pontos_inspecao_seta_voltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_pontos_inspecao_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_pontos_inspecao_background"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_retornar"
+        android:contentDescription="Seta Voltar"
+        tools:ignore="VectorDrawableCompat" />
+    <TextView
+        android:id="@+id/activity_pontos_inspecao_equipamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_pontos_inspecao_seta_voltar"
+        app:layout_constraintStart_toEndOf="@+id/activity_pontos_inspecao_seta_voltar"
+        app:layout_constraintTop_toTopOf="@+id/activity_pontos_inspecao_seta_voltar"
+        tools:text="Inspeção E - 7102"
+         />
+
+    <TextView
+        android:id="@+id/activity_pontos_inspecao_relatorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/activity_pontos_inspecao_seta_voltar"
+        app:layout_constraintTop_toBottomOf="@+id/activity_pontos_inspecao_seta_voltar"
+        tools:text="CF - 0042"
+        />
+    <TextView
+        android:id="@+id/activity_pontos_inspecao_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/activity_pontos_inspecao_relatorio"
+        app:layout_constraintTop_toBottomOf="@+id/activity_pontos_inspecao_relatorio"
+        tools:text="Segunda, 20/01/2020"
+        />
+    <TextView
+        android:id="@+id/activity_pontos_inspecao_alerta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Inspeção pronta para ser realizada"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_pontos_inspecao_background"
+        app:layout_constraintStart_toStartOf="@+id/activity_pontos_inspecao_data"
+        app:layout_constraintTop_toBottomOf="@+id/activity_pontos_inspecao_data"
+        app:layout_constraintVertical_bias="0.0"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_pontos_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_pontos_inspecao_background"
+        tools:listitem="@layout/ponto_inspecao_item"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
