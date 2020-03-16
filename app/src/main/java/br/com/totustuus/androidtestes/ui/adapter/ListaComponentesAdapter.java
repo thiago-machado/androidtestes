@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class ListaComponentesAdapter extends RecyclerView.Adapter<ListaComponent
     private final List<Componente> componentes;
     private final Context context;
     private OnItemClickListener onItemClickListener;
+    private ListaPontosAdapter adapter;
 
     public ListaComponentesAdapter(Context context, List<Componente> componentes) {
         this.context = context;
@@ -34,7 +36,7 @@ public class ListaComponentesAdapter extends RecyclerView.Adapter<ListaComponent
     @NonNull
     @Override
     public ComponenteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        final View viewCriada = LayoutInflater.from(context).inflate(R.layout.ponto_inspecao_item, parent, false);
+        final View viewCriada = LayoutInflater.from(context).inflate(R.layout.componente_inspecao_item, parent, false);
         return new ComponenteViewHolder(viewCriada);
     }
 
@@ -52,12 +54,14 @@ public class ListaComponentesAdapter extends RecyclerView.Adapter<ListaComponent
     class ComponenteViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView ccomponente;
+        private final RecyclerView listaPontos;
         private Componente componente;
 
         ComponenteViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ccomponente = itemView.findViewById(R.id.ponto_inspecao_componente);
+            ccomponente = itemView.findViewById(R.id.componente_inspecao);
+            listaPontos = itemView.findViewById(R.id.pontos_inspecao_recyclerview); // TODO
 
             itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -69,9 +73,36 @@ public class ListaComponentesAdapter extends RecyclerView.Adapter<ListaComponent
         }
 
         void vincula(Componente componente) {
+
+            Log.i("click", "click para preencher componente");
             this.componente = componente;
             ccomponente.setText( this.componente.getNome());
+
+            configuraAdapter(componente.getPontos(), listaPontos);
+
+            Log.i("click", "alterando visibilidade dos pontos");
+            listaPontos.setVisibility(componente.isExpandido() ? View.VISIBLE : View.GONE);
+
         }
 
+        private void configuraAdapter(List<String> pontos, RecyclerView listaPontos) {
+
+            Log.i("click", "configurando adapter dos pontos");
+            adapter = new ListaPontosAdapter(context, pontos);
+            listaPontos.setAdapter(adapter);
+
+            adapter.setOnItemClickListener(new OnItemClickListener() {
+
+                @Override
+                public void onItemClick(Componente componente, int posicao) {
+
+                }
+
+                @Override
+                public void onItemClick(String valor, int posicao) {
+                    Log.i("click", "onItemClick: " + valor);
+                }
+            });
+        }
     }
 }

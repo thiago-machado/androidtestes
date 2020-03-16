@@ -24,7 +24,7 @@
         android:id="@+id/activity_pontos_inspecao_background"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:background="@android:color/white"
+        android:background="@drawable/inspecao_cabecalho_barra_separacao"
         android:contentDescription="Banner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,6 +103,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/activity_pontos_inspecao_background"
-        tools:listitem="@layout/ponto_inspecao_item"
+        tools:listitem="@layout/componente_inspecao_item"
         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
